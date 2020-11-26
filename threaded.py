@@ -1,6 +1,7 @@
 #imports
 import time
 import sympy
+import primesieve
 from queue import Queue
 from threading import Thread
 
@@ -16,12 +17,10 @@ def add_Primes(q):
         q.task_done()
 q = Queue(maxsize=0)
 StartTime = time.time()
-CurrPrime = 2
 worker = Thread(target=add_Primes, args=(q,))
 worker.setDaemon(True)
 worker.start()
-
-q.put(2)
+it = primesieve.Iterator()
 while True:
-    CurrPrime = sympy.nextprime(CurrPrime)
+    CurrPrime = it.next_prime()
     q.put(CurrPrime)
