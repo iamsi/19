@@ -8,7 +8,7 @@ n = 1
 total = 0
 
 while True:
-    print (CurrPrime, end='\r')
+    print (n, end='\r')
     total = total + (CurrPrime ** 2)
     CurrPrime = sympy.nextprime(CurrPrime)
     if ( total % n == 0):
